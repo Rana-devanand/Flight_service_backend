@@ -1,4 +1,4 @@
-const { update } = require("../controllers/Airport/airport-controllers");
+const { update } = require("../controllers/airport/airport-controllers");
 const AirplaneRepository = require("../repository/airplane-repository")
 
 class AirplaneServices {
@@ -41,7 +41,7 @@ class AirplaneServices {
      async getAllFLights(filter) {
           try {
                const allFlights = await this.airplaneRepository.allFLights({
-                    Airline : filter.Airline
+                    Airline: filter.Airline
                });
                return allFlights;
           } catch (error) {
@@ -50,19 +50,19 @@ class AirplaneServices {
           }
      }
 
-     async updateFlightByPk(id , data) {
+     async updateFlightByPk(id, data) {
           try {
                const updateFLight = await this.airplaneRepository.updateFlightByPk(id, data);
-               return updateFLight; 
+               return updateFLight;
           } catch (error) {
                console.error("Error to update Flight in Services");
                throw error;
           }
      }
 
-     async fetchFilterFlightData(filter){
+     async fetchFilterFlightData(filter) {
           try {
-               console.log("services : " , filter)
+               console.log("services : ", filter)
                const flightData = await this.airplaneRepository.fetchFilterFlightData(filter);
                return flightData;
           } catch (error) {
@@ -71,7 +71,7 @@ class AirplaneServices {
           }
      }
 
-     async getDailyFlights(filter){
+     async getDailyFlights(filter) {
           try {
                const dailyFlights = await this.airplaneRepository.getDailyFlights(filter);
                return dailyFlights;
@@ -84,14 +84,14 @@ class AirplaneServices {
      async getByFlightId(flightId) {
           try {
                const flightsByFlightId = await this.airplaneRepository.getFlightById(flightId);
-               return flightsByFlightId; 
+               return flightsByFlightId;
           } catch (error) {
                console.error("Error to Fetch Daily Flights in Services");
-               throw {error};
+               throw { error };
           }
      }
 
-     async getAllInnerJoinFlights(){
+     async getAllInnerJoinFlights() {
           try {
                const response = await this.airplaneRepository.getAllInnerJoinFlights();
                return response;
